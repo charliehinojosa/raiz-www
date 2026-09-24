@@ -1,33 +1,53 @@
 # raiz-www
-Official Website for RAÍZ — https://raizband.com
+Official website for RAÍZ — https://raizband.com
 
-## Hosting
+One static page built with Vite + vanilla TypeScript, deployed on Vercel.
+The spec is [`docs/FRD.md`](docs/FRD.md); the design handoff notes are in
+[`docs/HANDOFF.md`](docs/HANDOFF.md) and the approved prototype is
+`design/prototype-Main.dc.html` (reference only, not served).
 
-Deployed on Vercel from the `main` branch (every other branch gets a preview URL).
-Right now the site is a static placeholder served from `public/`; this will be
-replaced when the design package lands.
+## Develop
 
-- `vercel.json` — clean URLs, `www.raizband.com` → `raizband.com` (301), basic security headers.
-- `public/` — static output directory (Vercel serves it as-is, no build step).
+```sh
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # typecheck + production build to dist/
+npm run preview   # serve dist/
+```
 
-## Domain / DNS (raizband.com)
+## Where things live
 
-Canonical host is the apex `raizband.com`; `www` redirects to it.
+| Path | What |
+|---|---|
+| `index.html` | Page markup. `{{tokens}}` and `<!--@blocks-->` are filled from `data/*.json` at build time (see `vite.config.ts`). |
+| `data/site.json` | Title, description, release date label, links, trailer ID, copyright |
+| `data/platforms.json` | Ticker + logo wall. `url: null` = COMING SOON; paste the album URL to make a cell live. |
+| `data/tracks.json` | RAÍZ Radio stations and the LISTEN link |
+| `public/assets/` | Images, video, audio, icons, served as-is at `/assets/...` |
+| `src/` | `styles.css`, `hero.ts` (video, roots on scroll), `trailer.ts` (modal), `radio.ts` (player) |
 
-1. In Vercel: **Add New → Project**, import `charliehinojosa/raiz-www`,
-   Framework Preset **Other**, leave build/output settings empty, deploy.
-2. Project → **Settings → Domains**: add `raizband.com` and `www.raizband.com`.
-3. At the registrar, set the records Vercel shows on that page. Typically:
+### Common edits
+- **New streaming link:** set `url` for that platform in `data/platforms.json`.
+- **Real radio clips:** drop the MP3s in `public/assets/audio/` and update `src` in `data/tracks.json`.
+- **Cleaned hero video:** replace `public/assets/video/hero-loop.mp4` (same name and specs).
+- **Release-day copy:** change `releaseDateLabel` in `data/site.json`; the body copy in `index.html` also says "September 26".
 
-   | Type  | Name  | Value                  |
-   |-------|-------|------------------------|
-   | A     | `@`   | `76.76.21.21`          |
-   | CNAME | `www` | `cname.vercel-dns.com` |
+Every push to `main` deploys to production; other branches get preview URLs.
 
-   Vercel may display newer project-specific values — if so, use those.
-4. Remove any registrar parking/forwarding records on `@` and `www` (conflicting
-   A/AAAA/CNAME records block verification). Leave MX/TXT records alone if the
-   domain will be used for email. If there are CAA records, one must allow
-   `letsencrypt.org`.
-5. Wait for both domains to show **Valid Configuration**; Vercel issues the SSL
-   certificate automatically.
+## Hosting (Vercel)
+
+`vercel.json` sets the Vite build (`dist/`), redirects `www.raizband.com` → `raizband.com`,
+adds security headers and cache headers (hashed bundles in `/static/` are immutable;
+`/assets/` caches for an hour so swapped media shows up quickly).
+
+### DNS for raizband.com
+Project → **Settings → Domains** lists `raizband.com` and `www.raizband.com`. At the registrar:
+
+| Type  | Name  | Value                  |
+|-------|-------|------------------------|
+| A     | `@`   | `76.76.21.21`          |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+Use the project-specific values instead if Vercel shows them. Remove registrar parking
+records on `@`/`www`, keep MX/TXT if the domain is used for email, and if there are CAA
+records one must allow `letsencrypt.org`.

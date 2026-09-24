@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAÍZ — The Debut Album</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&amp;family=Rubik+Dirt&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1A1411;font-family:Montserrat,'Helvetica Neue',sans-serif;color:#F5EFE3}
+a{color:#F5EFE3;text-decoration:none}a:hover{color:#FF4A1C}
+.rz{--pad:clamp(20px,5.5vw,80px)}
+.rz-bg{position:fixed;left:0;top:0;width:100vw;height:56.25vw;z-index:0;overflow:hidden;background:#1A1411}
+.rz-video{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;display:block}
+.rz-scrim{position:absolute;left:0;top:0;width:100%;height:100%}
+.rz-hero{position:relative;height:56.25vw;display:flex;flex-direction:column}
+.rz-hdr{position:absolute;left:0;top:0;right:0;z-index:2;height:clamp(64px,6.5vw,96px);box-sizing:border-box;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between}
+.rz-hdr-logo{height:clamp(34px,3.6vw,52px);width:auto;display:block}
+.rz-nav{display:flex;gap:clamp(18px,2.8vw,40px);align-items:center;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.rz-spacer{display:none}
+.rz-copy{flex-grow:1;box-sizing:border-box;padding:clamp(64px,6.5vw,96px) var(--pad) clamp(24px,4vw,64px);display:flex;flex-direction:column;justify-content:center;gap:clamp(16px,2.2vw,32px)}
+.rz-logo-wrap{position:relative;width:clamp(160px,24vw,360px);aspect-ratio:760/844}
+.rz-logo{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.rz-roots{-webkit-clip-path:circle(0% at 50% 59.5%);clip-path:circle(0% at 50% 59.5%);visibility:hidden}
+.rz-script{font-weight:400}
+.rz-f-dirt{font-family:'Rubik Dirt',Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.rz-date{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.rz-date-num{font-size:clamp(28px,2.8vw,40px)}
+.rz-btns{display:flex;gap:12px;flex-wrap:wrap}
+.rz-btn{height:clamp(48px,3.9vw,56px);box-sizing:border-box;padding:0 clamp(20px,2.2vw,32px);display:flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;font-size:clamp(12px,1vw,14px);font-weight:800;letter-spacing:.14em;white-space:nowrap}
+.rz-btn-ghost{font-family:inherit;cursor:pointer}
+.rz-btn-ghost:hover{color:#FF4A1C!important;border-color:#FF4A1C!important}
+.rz-navbtn{background:none;border:0;padding:0;margin:0;color:#F5EFE3;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;min-height:44px}
+.rz-navbtn:hover{color:#FF4A1C}
+.rz-modal{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:100;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:clamp(16px,4vw,56px)}
+.rz-modal-backdrop{position:absolute;left:0;top:0;width:100%;height:100%;border:0;padding:0;margin:0;background:rgba(10,7,5,.88);cursor:pointer}
+.rz-modal-box{position:relative;width:min(1120px,100%);display:flex;flex-direction:column;gap:14px;animation:rzPop .25s ease-out}
+.rz-modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rz-modal-close{width:44px;height:44px;border-radius:999px;border:1.5px solid rgba(245,239,227,.5);background:rgba(20,14,11,.6);color:#F5EFE3;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.rz-modal-close:hover{border-color:#FF4A1C;color:#FF4A1C}
+.rz-modal-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6);display:block}
+.rz-modal-frame img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:.8}
+.rz-modal-play{position:absolute;left:50%;top:50%;width:clamp(72px,8vw,108px);height:clamp(72px,8vw,108px);margin:calc(clamp(72px,8vw,108px)/-2) 0 0 calc(clamp(72px,8vw,108px)/-2);border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+@keyframes rzPop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rz-modal-box{animation:none}}
+.rz-radio-pill{position:fixed;right:16px;bottom:16px;z-index:60;min-height:48px;display:flex;align-items:center;gap:10px;padding:0 18px 0 14px;border-radius:999px;border:1.5px solid rgba(245,239,227,.35);background:rgba(20,14,11,.9);color:#F5EFE3;font:800 12px/1 Montserrat,sans-serif;letter-spacing:.2em;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.rz-radio-pill:hover{border-color:#FF4A1C;color:#FF4A1C}
+.rz-onair{width:8px;height:8px;border-radius:999px;background:rgba(245,239,227,.3);flex-shrink:0}
+.rz-onair-live{background:#FF4A1C;box-shadow:0 0 0 0 rgba(255,74,28,.6);animation:rzAir 1.6s ease-out infinite}
+@keyframes rzAir{0%{box-shadow:0 0 0 0 rgba(255,74,28,.6)}100%{box-shadow:0 0 0 10px rgba(255,74,28,0)}}
+.rz-radio{position:fixed;right:16px;bottom:16px;z-index:60;width:360px;box-sizing:border-box;padding:16px 18px 18px;border-radius:16px;border:1px solid rgba(245,239,227,.2);background:rgba(20,14,11,.94);color:#F5EFE3;font-family:Montserrat,sans-serif;box-shadow:0 20px 50px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:14px;animation:rzPop .2s ease-out}
+.rz-radio-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rz-radio-brand{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.24em}
+.rz-radio-min{width:44px;height:44px;margin:-10px -10px -10px 0;border:0;background:none;color:rgba(245,239,227,.7);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:999px}
+.rz-radio-min:hover{color:#F5EFE3}
+.rz-dial{position:relative;height:58px;border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#2A211C,#1E1814);border:1px solid rgba(245,239,227,.14)}
+.rz-dial-ticks{position:absolute;left:6px;right:6px;top:8px;height:12px;background:repeating-linear-gradient(90deg,rgba(245,239,227,.35) 0,rgba(245,239,227,.35) 1px,transparent 1px,transparent 8px)}
+.rz-dial-ticks-major{position:absolute;left:6px;right:6px;top:8px;height:18px;background:repeating-linear-gradient(90deg,rgba(245,239,227,.6) 0,rgba(245,239,227,.6) 1px,transparent 1px,transparent 40px)}
+.rz-station{position:absolute;bottom:7px;transform:translateX(-50%);border:0;background:none;padding:4px 2px;color:rgba(245,239,227,.45);font:700 10px/1 Montserrat,sans-serif;letter-spacing:.06em;cursor:pointer}
+.rz-station:hover{color:#F5EFE3}
+.rz-station-on{color:#F5EFE3}
+.rz-needle{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;box-shadow:0 0 10px rgba(255,74,28,.8);transition:left .5s cubic-bezier(.3,1.4,.5,1)}
+.rz-radio-title{font-family:'Rubik Dirt',Impact,sans-serif;font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:.01em;margin:0}
+.rz-radio-meta{font-size:11px;font-weight:700;letter-spacing:.18em;color:rgba(245,239,227,.6)}
+.rz-radio-prog{height:3px;border-radius:3px;background:rgba(245,239,227,.15);overflow:hidden}
+.rz-radio-prog-fill{height:100%}
+.rz-radio-ctrls{display:flex;align-items:center;gap:8px}
+.rz-rbtn{width:44px;height:44px;border-radius:999px;border:1.5px solid rgba(245,239,227,.3);background:transparent;color:#F5EFE3;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0}
+.rz-rbtn:hover{border-color:#F5EFE3}
+.rz-rbtn-play{width:56px;height:56px;border:0;color:#1A1411}
+.rz-radio-presave{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.16em;color:#F5EFE3;border-bottom:1.5px solid #FF4A1C;padding:12px 0 2px}
+@media (prefers-reduced-motion:reduce){.rz-needle{transition:none}.rz-onair-live{animation:none}.rz-radio{animation:none}}
+@media (max-width:760px){.rz-radio{left:8px;right:8px;bottom:8px;width:auto}.rz-radio-pill{right:12px;bottom:12px}}
+.rz-facts{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:18px;border-top:1px solid rgba(245,239,227,.15);max-width:620px}
+.rz-fact{display:flex;flex-direction:column;gap:6px}
+.rz-fact-k{font-size:11px;font-weight:800;letter-spacing:.24em;color:rgba(245,239,227,.55)}
+.rz-fact-v{font-size:16px;font-weight:700;color:#F5EFE3}
+@media (max-width:760px){.rz-about{font-size:16px!important}}
+.rz-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(26,20,17,.16);border-left:1px solid rgba(26,20,17,.16)}
+.rz-cell{min-height:150px;box-sizing:border-box;padding:24px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border-right:1px solid rgba(26,20,17,.16);border-bottom:1px solid rgba(26,20,17,.16);color:#1A1411;text-decoration:none;transition:background .2s ease}
+a.rz-cell:hover{background:#FFFFFF;color:#1A1411}
+a.rz-cell:hover .rz-cell-icon{transform:scale(1.08)}
+.rz-cell-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;letter-spacing:-.01em;color:#1A1411}
+.rz-cell-icon{width:30px;height:30px;flex-shrink:0;transition:transform .2s ease}
+.rz-cell-soon .rz-cell-logo{opacity:.4}
+.rz-cell-tag{font-size:11px;font-weight:800;letter-spacing:.2em}
+@media (max-width:1000px){.rz-wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.rz-cell{min-height:112px;padding:18px 10px;gap:10px}.rz-cell-logo{font-size:15px;gap:8px}.rz-cell-icon{width:22px;height:22px}}
+.rz-ticker{position:relative;overflow:hidden;white-space:nowrap;border-top:2px solid #1A1411;border-bottom:2px solid #1A1411}
+.rz-ticker-track{display:inline-flex;width:max-content;animation:rzTick 38s linear infinite}
+.rz-ticker:hover .rz-ticker-track{animation-play-state:paused}
+.rz-ticker-group{display:inline-flex;align-items:center;gap:clamp(14px,1.4vw,22px);padding:clamp(7px,.6vw,9px) clamp(7px,.7vw,11px);line-height:1}
+.rz-ticker-lead{font-family:'Rubik Dirt',Impact,sans-serif;font-size:clamp(14px,1.15vw,17px);text-transform:uppercase;letter-spacing:.02em}
+.rz-ticker-item{font-size:clamp(11px,.9vw,13px);font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.rz-ticker-sep{width:5px;height:5px;border-radius:999px;background:#1A1411;flex-shrink:0}
+@keyframes rzTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.rz-ticker-track{animation:none}}
+.rz-album{box-sizing:border-box;padding:clamp(72px,8vw,120px) var(--pad);display:flex;gap:clamp(40px,6vw,88px);align-items:center}
+.rz-cover{width:clamp(260px,33vw,480px);height:auto;aspect-ratio:1/1;flex-shrink:0;object-fit:cover;display:block}
+.rz-tagline{font-size:clamp(28px,3vw,44px)}
+.rz-listen{box-sizing:border-box;padding:clamp(72px,7.8vw,112px) var(--pad) clamp(80px,8.3vw,120px);display:flex;flex-direction:column;gap:clamp(32px,3.3vw,48px)}
+.rz-listen-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.rz-listen-note{text-align:right}
+.rz-h2{font-size:clamp(36px,3.9vw,56px)}
+.rz-foot{box-sizing:border-box;padding:48px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.rz-foot-links{display:flex;gap:32px;flex-wrap:wrap}
+.rz-fx{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;pointer-events:none}
+.rz-fx-l{position:absolute;left:0;top:0;width:100%;height:100%}
+.rz-grain{position:absolute;left:-50%;top:-50%;width:200%;height:200%;mix-blend-mode:overlay;opacity:.6;animation:rzGrain .6s steps(6) infinite}
+.rz-grain-soft{opacity:.35}
+@keyframes rzGrain{0%{transform:translate(0,0)}17%{transform:translate(-8%,5%)}33%{transform:translate(6%,-9%)}50%{transform:translate(-4%,11%)}67%{transform:translate(10%,3%)}83%{transform:translate(-11%,-6%)}100%{transform:translate(3%,8%)}}
+.rz-dust{background-image:url(/_blob/1e2bf9e0fe8a5aa92f409b01d9781a55);background-size:1600px 900px;background-repeat:repeat;animation:rzDust .5s steps(1) infinite}
+@keyframes rzDust{0%{background-position:0 0;transform:none;opacity:.85}25%{background-position:-530px -310px;transform:scaleX(-1);opacity:.7}50%{background-position:-910px -120px;transform:scaleY(-1);opacity:.9}75%{background-position:-260px -640px;transform:scale(-1,-1);opacity:.75}}
+.rz-flicker{background:#F5EFE3;mix-blend-mode:overlay;animation:rzFlick 1.8s steps(9) infinite}
+@keyframes rzFlick{0%{opacity:.02}11%{opacity:.07}22%{opacity:.01}33%{opacity:.05}44%{opacity:.03}55%{opacity:.08}66%{opacity:.02}77%{opacity:.06}88%{opacity:.03}}
+.rz-lines{background:repeating-linear-gradient(180deg,rgba(0,0,0,.45) 0,rgba(0,0,0,.45) 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 3px);animation:rzLines 4s steps(16) infinite}
+.rz-lines-soft{opacity:.55;animation:none}
+@keyframes rzLines{0%{opacity:.95}25%{opacity:.8}50%{opacity:1}75%{opacity:.85}}
+.rz-tube{background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 52%,rgba(0,0,0,.6) 100%)}
+.rz-roll{height:22%;top:-24%;background:linear-gradient(180deg,rgba(245,239,227,0) 0%,rgba(245,239,227,.09) 50%,rgba(245,239,227,0) 100%);animation:rzRoll 6.5s linear infinite}
+@keyframes rzRoll{0%{transform:translateY(0)}100%{transform:translateY(580%)}}
+.rz-halftone{background:radial-gradient(circle at 50% 50%,rgba(20,14,11,.6) 0,rgba(20,14,11,.6) 1.1px,rgba(20,14,11,0) 1.7px) 0 0/4px 4px;mix-blend-mode:multiply}
+.rz-v-film{filter:sepia(.18) contrast(1.1) saturate(.9)}
+.rz-v-crt{filter:contrast(1.12) saturate(1.1) blur(.4px)}
+.rz-v-vhs{filter:saturate(1.3) contrast(1.06) blur(.6px)}
+.rz-v-half{filter:contrast(1.2) saturate(.85)}
+@media (prefers-reduced-motion:reduce){.rz-fx *{animation:none!important}}
+@media (max-width:760px){
+.rz-hero{height:auto}
+.rz-scrim-side{display:none}
+.rz-hide-sm{display:none}
+.rz-spacer{display:block;height:56.25vw}
+.rz-copy{background:#1A1411;padding:36px var(--pad) 56px;box-shadow:0 -24px 48px rgba(0,0,0,.45)}
+.rz-logo-wrap{width:200px}
+.rz-btn{flex:1 1 100%}
+.rz-album{flex-direction:column;align-items:flex-start;padding-top:24px}
+.rz-cover{width:100%}
+.rz-listen-head{flex-direction:column;align-items:flex-start;gap:16px}
+.rz-listen-note{text-align:left}
+.rz-foot{flex-direction:column;align-items:flex-start;padding:40px var(--pad) 48px}
+}
+</style>
+</helmet>
+<div class="rz" style="position: relative; width: 100%; background: #1A1411; color: #F5EFE3; font-family: Montserrat, 'Helvetica Neue', sans-serif;">
+
+<div class="rz-bg" aria-hidden="true">
+<video class="rz-video {{videoClass}}" ref="{{videoRef}}" src="/_blob/b067b2154174cc915d90608d6ab4b53f" poster="/_blob/ba87835c825de5d99ef07ea00360cad4" autoPlay="{{yes}}" muted="{{yes}}" loop="{{yes}}" playsInline="{{yes}}" preload="auto"></video>
+<div class="rz-fx" style="opacity: {{fxOpacity}};">
+<sc-if value="{{fxHalftone}}" hint-placeholder-val="{{ false }}"><div class="rz-fx-l rz-halftone"></div></sc-if>
+<sc-if value="{{fxLines}}" hint-placeholder-val="{{ false }}"><div class="rz-fx-l rz-lines {{linesClass}}"></div></sc-if>
+<sc-if value="{{fxGrain}}" hint-placeholder-val="{{ false }}"><svg class="rz-grain {{grainClass}}" xmlns="http://www.w3.org/2000/svg"><filter id="rzNoise" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#rzNoise)"></rect></svg></sc-if>
+<sc-if value="{{fxDust}}" hint-placeholder-val="{{ false }}"><div class="rz-fx-l rz-dust"></div><div class="rz-fx-l rz-flicker"></div></sc-if>
+<sc-if value="{{fxRoll}}" hint-placeholder-val="{{ false }}"><div class="rz-fx-l rz-roll"></div></sc-if>
+<sc-if value="{{fxTube}}" hint-placeholder-val="{{ false }}"><div class="rz-fx-l rz-tube"></div></sc-if>
+</div>
+<div class="rz-scrim rz-scrim-side" style="background: linear-gradient(90deg, rgba(20,14,11,0.9) 0%, rgba(20,14,11,0.7) 32%, rgba(20,14,11,0.1) 60%, rgba(20,14,11,0) 100%);"></div>
+<div class="rz-scrim" style="background: linear-gradient(180deg, rgba(20,14,11,0.6) 0%, rgba(20,14,11,0) 22%, rgba(20,14,11,0) 80%, rgba(20,14,11,0.55) 100%);"></div>
+</div>
+
+<div style="position: relative; z-index: 1;">
+
+<section id="top" class="rz-hero">
+<header class="rz-hdr">
+<a href="#top" aria-label="RAÍZ home" style="display: flex; align-items: center;"><img class="rz-hdr-logo" src="/_blob/251ac4c2ed15588d362e4c426abd5494" alt="RAÍZ"></a>
+<nav class="rz-nav" aria-label="Primary">
+<a class="rz-hide-sm" href="#album">Album</a>
+<a href="#listen">Listen</a>
+<button type="button" class="rz-hide-sm rz-navbtn" onClick="{{openTrailer}}">Trailer</button>
+<a href="https://instagram.com/raizbandmusic" target="_blank" rel="noopener" aria-label="Instagram @raizbandmusic" style="display: flex; align-items: center; gap: 8px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg><span class="rz-hide-sm">@raizbandmusic</span></a>
+</nav>
+</header>
+<div class="rz-spacer"></div>
+<div class="rz-copy">
+<h1 class="rz-logo-wrap" style="margin: 0;"><img class="rz-logo" src="/_blob/e49770f436317c40ab46c51f2084a710" alt="RAÍZ"><img class="rz-logo rz-roots" ref="{{rootsRef}}" src="/_blob/1f20f63d446d6d6baacd3969c9702348" alt=""></h1>
+<div class="rz-date">
+<span style="font-size: 14px; font-weight: 800; letter-spacing: 0.32em; color: #F5EFE3;">THE DEBUT ALBUM</span>
+<span class="rz-date-num" style="font-weight: 900; letter-spacing: 0.02em; color: {{accent}};">SEPT 26</span>
+</div>
+<div class="rz-btns">
+<a class="rz-btn" href="#listen" style="background: {{accent}}; color: #1A1411;">LISTEN SEPT 26</a>
+<button type="button" class="rz-btn rz-btn-ghost" onClick="{{openTrailer}}" style="border: 1.5px solid rgba(245,239,227,0.7); background: rgba(20,14,11,0.35); color: #F5EFE3;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"></path></svg>WATCH THE TRAILER</button>
+</div>
+</div>
+</section>
+
+<div class="rz-ticker" role="marquee" aria-label="The debut album streaming on Spotify, Apple Music, YouTube Music, Amazon Music, Tidal, Deezer, Pandora and iHeartRadio" style="background: {{accent}}; color: #1A1411;">
+<div class="rz-ticker-track" aria-hidden="true">
+<div class="rz-ticker-group">
+<span class="rz-ticker-lead">The debut album streaming on</span>
+<sc-for list="{{platforms}}" as="p" hint-placeholder-count="8">
+<span class="rz-ticker-sep"></span><span class="rz-ticker-item">{{p.name}}</span>
+</sc-for>
+<span class="rz-ticker-sep"></span>
+</div>
+<div class="rz-ticker-group">
+<span class="rz-ticker-lead">The debut album streaming on</span>
+<sc-for list="{{platforms}}" as="p" hint-placeholder-count="8">
+<span class="rz-ticker-sep"></span><span class="rz-ticker-item">{{p.name}}</span>
+</sc-for>
+<span class="rz-ticker-sep"></span>
+</div>
+</div>
+</div>
+
+<section id="album" class="rz-album" style="background: #1A1411;">
+<img class="rz-cover" src="/_blob/1b6d96f4e13bc1fbe8c594e644a4deb8" alt="RAÍZ album cover: the band walks out of an adobe church into the afternoon sun, the RAÍZ logo with roots in the sky" style="border-radius: 6px; box-shadow: 0 40px 80px rgba(0,0,0,0.5);">
+<div style="display: flex; flex-direction: column; gap: 22px;">
+<div style="font-size: 14px; font-weight: 800; letter-spacing: 0.32em; color: {{accent}};">MEET RAÍZ</div>
+<p class="rz-tagline rz-script rz-f-dirt" style="margin: 0; max-width: 640px; line-height: 1.15; color: #F5EFE3;">Where it all started. Donde todo empieza.</p>
+<div class="rz-about" style="display: flex; flex-direction: column; gap: 16px; max-width: 580px; font-size: 18px; line-height: 1.6; color: rgba(245,239,227,0.82);">
+<p style="margin: 0;"><strong style="color: #F5EFE3; font-weight: 800;">RAÍZ is Christian alt-rock with Latin roots.</strong> Overdriven electric guitar carries the hook, congas and timbales drive the groove, and one voice sings it all in two languages. Think Santana and Maná colliding with ’90s alt-rock.</p>
+<p style="margin: 0;">The songs switch between English and <span lang="es">español</span> the way bilingual families actually talk, mid-sentence and without translating.</p>
+<p style="margin: 0;"><span lang="es">Raíz</span> means <em>root</em>. The self-titled debut goes back to where faith starts, and it’s out everywhere <strong style="color: #F5EFE3; font-weight: 800;">September 26</strong>.</p>
+</div>
+<div class="rz-facts">
+<div class="rz-fact"><span class="rz-fact-k">SOUND</span><span class="rz-fact-v">Latin alt-rock</span></div>
+<div class="rz-fact"><span class="rz-fact-k">LANGUAGE</span><span class="rz-fact-v">English + Español</span></div>
+</div>
+<div style="display: flex;">
+<button type="button" class="rz-btn rz-btn-ghost" onClick="{{openRadio}}" style="border: 1.5px solid rgba(245,239,227,0.7); background: transparent; color: #F5EFE3;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l13-5"></path><rect x="3" y="9" width="18" height="12" rx="2"></rect><circle cx="15.5" cy="15" r="3"></circle><path d="M6.5 13h4M6.5 17h4"></path></svg>TUNE IN TO RAÍZ RADIO</button>
+</div>
+</div>
+</section>
+
+<section id="listen" class="rz-listen" style="background: #F5EFE3; color: #1A1411;">
+<div class="rz-listen-head">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="font-size: 14px; font-weight: 800; letter-spacing: 0.32em; color: #B8330F;">AVAILABLE EVERYWHERE · SEPT 26</div>
+<h2 class="rz-h2" style="margin: 0; font-weight: 900; color: #1A1411;">Listen to RAÍZ</h2>
+</div>
+<p class="rz-listen-note rz-script rz-f-dirt" style="margin: 0; max-width: 380px; font-size: 24px; line-height: 1.3; color: #4A3F37;">Pick your platform. Escúchalo donde quieras.</p>
+</div>
+<div class="rz-wall">
+<sc-for list="{{platforms}}" as="p" hint-placeholder-count="8">
+<sc-if value="{{p.live}}" hint-placeholder-val="{{ false }}">
+<a class="rz-cell" href="{{p.url}}" target="_blank" rel="noopener" aria-label="Listen to RAÍZ on {{p.name}}">
+<span class="rz-cell-logo"><sc-if value="{{p.hasIcon}}" hint-placeholder-val="{{ true }}"><svg class="rz-cell-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{{p.icon}}"></path></svg></sc-if><span>{{p.name}}</span></span>
+<span class="rz-cell-tag" style="color: #B8330F;">LISTEN →</span>
+</a>
+</sc-if>
+<sc-if value="{{p.soon}}" hint-placeholder-val="{{ true }}">
+<div class="rz-cell rz-cell-soon">
+<span class="rz-cell-logo"><sc-if value="{{p.hasIcon}}" hint-placeholder-val="{{ true }}"><svg class="rz-cell-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{{p.icon}}"></path></svg></sc-if><span>{{p.name}}</span></span>
+<span class="rz-cell-tag" style="color: #6B5F55;">COMING SOON</span>
+</div>
+</sc-if>
+</sc-for>
+</div>
+</section>
+
+<footer class="rz-foot" style="background: #1A1411; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: rgba(245,239,227,0.7);">
+<img src="/_blob/251ac4c2ed15588d362e4c426abd5494" alt="RAÍZ" style="height: 64px; width: auto; display: block;">
+<div class="rz-foot-links">
+<a href="https://instagram.com/raizbandmusic" target="_blank" rel="noopener">INSTAGRAM</a>
+<a href="https://www.youtube.com/@raizband" target="_blank" rel="noopener">YOUTUBE</a>
+</div>
+<span>© 2026 Sightbox Records</span>
+</footer>
+
+</div>
+
+<sc-if value="{{radioClosed}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="rz-radio-pill" onClick="{{openRadio}}" aria-label="Open RAÍZ Radio, preview tracks from the album">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l13-5"></path><rect x="3" y="9" width="18" height="12" rx="2"></rect><circle cx="15.5" cy="15" r="3"></circle><path d="M6.5 13h4M6.5 17h4"></path></svg>
+<span>RAÍZ RADIO</span><span class="rz-onair {{airClass}}"></span>
+</button>
+</sc-if>
+<sc-if value="{{radioOpen}}" hint-placeholder-val="{{ false }}">
+<section class="rz-radio" aria-label="RAÍZ Radio">
+<div class="rz-radio-top">
+<div class="rz-radio-brand"><span class="rz-onair {{airClass}}"></span><span>RAÍZ RADIO</span><span style="color: rgba(245,239,227,0.5);">{{airLabel}}</span></div>
+<button type="button" class="rz-radio-min" onClick="{{closeRadio}}" aria-label="Minimize radio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+<div class="rz-dial">
+<div class="rz-dial-ticks"></div>
+<div class="rz-dial-ticks-major"></div>
+<sc-for list="{{tracks}}" as="t" hint-placeholder-count="6">
+<button type="button" class="rz-station {{t.cls}}" style="left: {{t.pos}};" onClick="{{t.pick}}" aria-label="{{t.aria}}">{{t.freq}}</button>
+</sc-for>
+<div class="rz-needle" style="left: {{needleLeft}}; background: {{accent}};"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;" aria-live="polite">
+<div class="rz-radio-meta">TRACK {{trackNum}} / {{trackCount}} · {{trackFreq}} FM</div>
+<p class="rz-radio-title">{{trackTitle}}</p>
+</div>
+<div class="rz-radio-prog"><div class="rz-radio-prog-fill" style="width: {{progress}}; background: {{accent}};"></div></div>
+<div class="rz-radio-ctrls">
+<button type="button" class="rz-rbtn" onClick="{{prevTrack}}" aria-label="Previous track"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"></path></svg></button>
+<button type="button" class="rz-rbtn rz-rbtn-play" onClick="{{togglePlay}}" aria-label="{{playLabel}}" style="background: {{accent}};">
+<sc-if value="{{playing}}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg></sc-if>
+<sc-if value="{{paused}}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5l13 7.5-13 7.5z"></path></svg></sc-if>
+</button>
+<button type="button" class="rz-rbtn" onClick="{{nextTrack}}" aria-label="Next track"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"></path></svg></button>
+<a class="rz-radio-presave" href="{{presaveUrl}}" target="_blank" rel="noopener">LISTEN</a>
+</div>
+</section>
+</sc-if>
+<audio ref="{{audioRef}}" src="{{trackSrc}}" preload="none" onTimeUpdate="{{onTime}}" onEnded="{{onEnded}}" onPause="{{onPauseEv}}" onPlay="{{onPlayEv}}"></audio>
+<audio ref="{{staticRef}}" src="audio/static.mp3" preload="auto"></audio>
+
+<sc-if value="{{trailerOpen}}" hint-placeholder-val="{{ false }}">
+<div class="rz-modal" role="dialog" aria-modal="true" aria-label="RAÍZ official trailer">
+<button type="button" class="rz-modal-backdrop" aria-label="Close trailer" onClick="{{closeTrailer}}"></button>
+<div class="rz-modal-box">
+<div class="rz-modal-head">
+<span style="font-size: 13px; font-weight: 800; letter-spacing: 0.32em; color: #F5EFE3;">OFFICIAL TRAILER <span style="color: {{accent}};">· SEPT 26</span></span>
+<button type="button" class="rz-modal-close" aria-label="Close trailer" onClick="{{closeTrailer}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<a class="rz-modal-frame" href="https://youtu.be/RUbaCzaXmBw" target="_blank" rel="noopener" aria-label="Play the RAÍZ trailer on YouTube">
+<img src="/_blob/ba87835c825de5d99ef07ea00360cad4" alt="">
+<span class="rz-modal-play" style="background: {{accent}};"><svg width="36" height="36" viewBox="0 0 24 24" fill="#1A1411" aria-hidden="true"><path d="M7 4.5l13 7.5-13 7.5z"></path></svg></span>
+</a>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"videoFx":{"editor":"enum","options":["Off","Film grain","Distressed film","CRT tube lines","VHS","Halftone"],"default":"VHS","section":"Video overlay"},"fxStrength":{"editor":"range","min":0,"max":100,"step":5,"default":70,"unit":"%","section":"Video overlay"},"accent":{"editor":"color","default":"#FF4A1C","options":["#FF4A1C","#E8A33D","#6FA3D8"]},"$preview":{"width":1440,"height":810}}'>
+class Component extends DCLogic {
+componentDidMount() {
+var self = this;
+this.onScroll = function () {
+var el = self.rootsEl; if (!el) return;
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var span = Math.max(240, window.innerWidth * 0.5625 * 0.55);
+var t = reduce ? 1 : Math.min(1, Math.max(0, (window.scrollY || document.documentElement.scrollTop || 0) / span));
+var e = 1 - Math.pow(1 - t, 2);
+var c = 'circle(' + (e * 50).toFixed(2) + '% at 50% 59.5%)';
+el.style.clipPath = c; el.style.webkitClipPath = c;
+el.style.visibility = t > 0.005 ? 'visible' : 'hidden';
+};
+window.addEventListener('scroll', this.onScroll, { passive: true });
+window.addEventListener('resize', this.onScroll);
+this.onScroll();
+}
+tracksList() {
+return [
+{ title: 'Vivo', freq: '88.1', src: 'audio/clip-01.mp3' },
+{ title: 'I Speak Jesus', freq: '91.3', src: 'audio/clip-02.mp3' },
+{ title: 'Abuela', freq: '94.5', src: 'audio/clip-03.mp3' },
+{ title: 'Tres', freq: '97.7', src: 'audio/clip-04.mp3' },
+{ title: '3:33', freq: '100.9', src: 'audio/clip-05.mp3' },
+{ title: 'La Lucha', freq: '104.1', src: 'audio/clip-06.mp3' }
+];
+}
+play() {
+var a = this.audioEl; if (!a) { return; }
+var p = a.play(); if (p && p.catch) { p.catch(function () {}); }
+}
+tune(i) {
+var self = this;
+if (this.staticEl) { try { this.staticEl.currentTime = 0; var sp = this.staticEl.play(); if (sp && sp.catch) { sp.catch(function () {}); } } catch (e) {} }
+this.setState({ track: i, progress: 0 }, function () {
+var a = self.audioEl; if (!a) { return; }
+a.load();
+setTimeout(function () { self.play(); }, 280);
+});
+}
+componentWillUnmount() {
+if (this.audioEl) { this.audioEl.pause(); }
+window.removeEventListener('scroll', this.onScroll);
+window.removeEventListener('resize', this.onScroll);
+}
+renderVals() {
+var self = this;
+var q = encodeURIComponent('Raiz');
+var fx = this.props.videoFx || 'VHS';
+var st = this.state || {};
+var TRACKS = self.tracksList();
+var idx = st.track || 0;
+return {
+yes: true,
+tracks: TRACKS.map(function (t, i) {
+return { freq: t.freq, pos: (8 + i * (84 / (TRACKS.length - 1))) + '%', cls: i === idx ? 'rz-station-on' : '', aria: 'Tune to ' + t.title, pick: function () { self.tune(i); } };
+}),
+needleLeft: (8 + idx * (84 / (TRACKS.length - 1))) + '%',
+trackTitle: TRACKS[idx].title,
+trackFreq: TRACKS[idx].freq,
+trackNum: ('0' + (idx + 1)).slice(-2),
+trackCount: ('0' + TRACKS.length).slice(-2),
+trackSrc: TRACKS[idx].src,
+presaveUrl: 'https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa',
+progress: Math.round((st.progress || 0) * 1000) / 10 + '%',
+playing: !!st.playing,
+paused: !st.playing,
+playLabel: st.playing ? 'Pause' : 'Play ' + TRACKS[idx].title,
+airClass: st.playing ? 'rz-onair-live' : '',
+airLabel: st.playing ? 'ON AIR' : 'OFF AIR',
+radioOpen: !!st.radioOpen,
+radioClosed: !st.radioOpen,
+openRadio: function () { self.setState({ radioOpen: true }); if (!self.state || !self.state.playing) { self.play(); } },
+closeRadio: function () { self.setState({ radioOpen: false }); },
+togglePlay: function () { if (st.playing) { self.audioEl && self.audioEl.pause(); } else { self.play(); } },
+nextTrack: function () { self.tune((idx + 1) % TRACKS.length); },
+prevTrack: function () { self.tune((idx - 1 + TRACKS.length) % TRACKS.length); },
+audioRef: function (el) { self.audioEl = el; },
+staticRef: function (el) { self.staticEl = el; if (el) { el.volume = 0.35; } },
+onTime: function (e) { var a = e.target; if (a.duration) { self.setState({ progress: a.currentTime / a.duration }); } },
+onEnded: function () { self.tune((idx + 1) % TRACKS.length); },
+onPauseEv: function () { self.setState({ playing: false }); },
+onPlayEv: function () { self.setState({ playing: true }); },
+trailerOpen: !!(this.state && this.state.trailerOpen),
+openTrailer: function () { if (self.audioEl) { self.audioEl.pause(); } self.setState({ trailerOpen: true }); },
+closeTrailer: function () { self.setState({ trailerOpen: false }); },
+rootsRef: function (el) { self.rootsEl = el; if (el && self.onScroll) { self.onScroll(); } },
+accent: this.props.accent ?? '#FF4A1C',
+fxOpacity: Math.max(0, Math.min(100, this.props.fxStrength ?? 70)) / 100,
+fxGrain: fx === 'Film grain' || fx === 'Distressed film' || fx === 'VHS',
+grainClass: fx === 'VHS' ? 'rz-grain-soft' : '',
+fxDust: fx === 'Distressed film',
+fxLines: fx === 'CRT tube lines' || fx === 'VHS',
+linesClass: fx === 'VHS' ? 'rz-lines-soft' : '',
+fxTube: fx === 'CRT tube lines' || fx === 'Distressed film',
+fxRoll: fx === 'VHS' || fx === 'CRT tube lines',
+fxHalftone: fx === 'Halftone',
+videoClass: ({ 'Film grain': 'rz-v-film', 'Distressed film': 'rz-v-film', 'CRT tube lines': 'rz-v-crt', 'VHS': 'rz-v-vhs', 'Halftone': 'rz-v-half' })[fx] || '',
+videoRef: function (el) {
+if (el) { el.muted = true; var p = el.play && el.play(); if (p && p.catch) { p.catch(function () {}); } }
+},
+platforms: [
+{ name: "Spotify", url: 'https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa', icon: "M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" },
+{ name: "Apple Music", url: null, icon: "M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z" },
+{ name: "YouTube Music", url: null, icon: "M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z" },
+{ name: "Amazon Music", url: null, icon: '' },
+{ name: "Tidal", url: null, icon: "M12.012 3.992L8.008 7.996 4.004 3.992 0 7.996 4.004 12l4.004-4.004L12.012 12l-4.004 4.004 4.004 4.004 4.004-4.004L12.012 12l4.004-4.004-4.004-4.004zM16.042 7.996l3.979-3.979L24 7.996l-3.979 3.979z" },
+{ name: "Deezer", url: null, icon: "M.693 10.024c.381 0 .693-1.256.693-2.807 0-1.55-.312-2.807-.693-2.807C.312 4.41 0 5.666 0 7.217s.312 2.808.693 2.808ZM21.038 1.56c-.364 0-.684.805-.91 2.096C19.765 1.446 19.184 0 18.526 0c-.78 0-1.464 2.036-1.784 5-.312-2.158-.788-3.536-1.325-3.536-.745 0-1.386 2.704-1.62 6.472-.442-1.932-1.083-3.145-1.793-3.145s-1.35 1.213-1.793 3.145c-.242-3.76-.874-6.463-1.628-6.463-.537 0-1.013 1.378-1.325 3.535C6.938 2.036 6.262 0 5.474 0c-.658 0-1.247 1.447-1.602 3.665-.217-1.291-.546-2.105-.91-2.105-.675 0-1.221 2.807-1.221 6.272 0 3.466.546 6.273 1.221 6.273.277 0 .537-.476.736-1.273.32 2.928.996 4.938 1.776 4.938.606 0 1.143-1.204 1.507-3.11.251 3.622.875 6.195 1.602 6.195.46 0 .875-1.023 1.187-2.677C10.142 21.6 11 24 12.004 24c1.005 0 1.863-2.4 2.235-5.822.312 1.654.727 2.677 1.186 2.677.728 0 1.352-2.573 1.603-6.195.364 1.906.9 3.11 1.507 3.11.78 0 1.455-2.01 1.775-4.938.208.797.46 1.273.737 1.273.675 0 1.22-2.807 1.22-6.273-.008-3.457-.553-6.272-1.23-6.272ZM23.307 10.024c.381 0 .693-1.256.693-2.807 0-1.55-.312-2.807-.693-2.807-.381 0-.693 1.256-.693 2.807s.312 2.808.693 2.808Z" },
+{ name: "Pandora", url: null, icon: "M1.882 0v24H8.32a1.085 1.085 0 001.085-1.085v-4.61h1.612c7.88 0 11.103-4.442 11.103-9.636C22.119 2.257 17.247 0 12.662 0H1.882Z" },
+{ name: "iHeartRadio", url: null, icon: "M4.403 21.983c.597 0 1.023-.306 1.023-.817v-.012c0-.489-.375-.784-1.017-.784H3.182v1.613zm-1.67-1.8c0-.125.102-.228.221-.228h1.489c.488 0 .88.148 1.13.398.193.193.307.472.307.784v.011c0 .654-.443 1.034-1.062 1.154l.988 1.272c.046.051.074.102.074.164 0 .12-.114.222-.227.222-.091 0-.16-.05-.21-.12l-1.12-1.453H3.183v1.346a.228.228 0 01-.228.227.227.227 0 01-.221-.227v-3.55m6.674 2.29l-.914-2.035-.915 2.034zm-2.812 1.164l1.614-3.528c.056-.125.142-.2.284-.2h.022c.137 0 .228.075.279.2l1.613 3.522a.31.31 0 01.029.113c0 .12-.097.216-.216.216-.108 0-.182-.074-.222-.165l-.415-.914H7.402l-.415.926c-.04.097-.113.153-.216.153a.204.204 0 01-.204-.204.26.26 0 01.028-.12m6.078-.118c1.005 0 1.647-.682 1.647-1.563v-.011c0-.88-.642-1.574-1.647-1.574h-.932v3.148zm-1.38-3.335c0-.125.102-.228.221-.228h1.16c1.249 0 2.112.858 2.112 1.977v.012c0 1.119-.863 1.988-2.113 1.988h-1.159a.226.226 0 01-.221-.227v-3.522m4.481-.029c0-.124.103-.227.222-.227.125 0 .227.103.227.227v3.579a.228.228 0 01-.227.227.227.227 0 01-.222-.227v-3.579m5.027 1.801v-.011c0-.904-.659-1.642-1.568-1.642s-1.556.727-1.556 1.63v.012c0 .903.659 1.642 1.567 1.642.91 0 1.557-.728 1.557-1.631zm-3.59 0v-.011c0-1.097.824-2.057 2.033-2.057 1.21 0 2.023.949 2.023 2.045v.012c0 1.096-.824 2.056-2.034 2.056s-2.022-.949-2.022-2.045m2.03-17.192c0 1.397-.754 2.773-2.242 4.092a.345.345 0 01-.458-.517c1.333-1.182 2.01-2.385 2.01-3.575v-.016c0-.966-.606-2.103-1.38-2.588a.345.345 0 11.367-.586c.97.61 1.703 1.974 1.703 3.174zM14.76 7.677a.345.345 0 11-.337-.602c.799-.448 1.336-1.318 1.339-2.167a2.096 2.096 0 00-1.124-1.855.345.345 0 11.321-.611 2.785 2.785 0 011.493 2.46v.011c-.004 1.09-.683 2.199-1.692 2.764zm-2.772-1.015a1.498 1.498 0 11.001-2.997 1.498 1.498 0 01-.001 2.997zm-2.303.882a.345.345 0 01-.47.133c-1.009-.565-1.688-1.674-1.692-2.764v-.01a2.785 2.785 0 011.493-2.461.346.346 0 01.321.611 2.096 2.096 0 00-1.124 1.855c.003.849.54 1.719 1.34 2.166a.345.345 0 01.132.47zM7.464 8.825a.344.344 0 01-.488.03C5.49 7.536 4.734 6.16 4.734 4.763v-.016c0-1.2.732-2.564 1.703-3.174a.346.346 0 01.367.586c-.774.485-1.38 1.622-1.38 2.588v.016c0 1.19.677 2.393 2.01 3.575a.345.345 0 01.03.487zM16.152 0c-1.727 0-3.27.915-4.164 2.252C11.094.915 9.55 0 7.823 0A4.982 4.982 0 002.84 4.983c0 1.746 1.106 3.005 2.261 4.17l4.518 4.272a.371.371 0 00.626-.27V9.827c0-.963.78-1.743 1.743-1.745a1.745 1.745 0 011.742 1.745v3.328c0 .326.39.493.626.27l4.518-4.272c1.155-1.165 2.261-2.424 2.261-4.17A4.982 4.982 0 0016.152 0M4.582 14.766h1.194v1.612h1.532v-1.612H8.5v4.307H7.308v-1.637H5.776v1.637H4.582v-4.307m6.527 2.353a.563.563 0 00-.578-.587c-.308 0-.55.238-.578.587zm-2.264.305v-.012c0-.972.696-1.741 1.68-1.741 1.15 0 1.68.842 1.68 1.82 0 .075 0 .16-.007.24H9.971c.093.364.357.549.72.549.277 0 .498-.105.738-.34l.647.536c-.32.406-.782.677-1.447.677-1.045 0-1.784-.695-1.784-1.729m7.29-1.68h1.17v.67c.19-.454.498-.75 1.051-.725v1.23h-.098c-.609 0-.954.351-.954 1.12v1.034h-1.168v-3.329m2.95 2.295v-1.353h-.393v-.942h.393v-.842h1.17v.842h.775v.942h-.775v1.126c0 .234.105.332.32.332.153 0 .301-.043.442-.11v.916c-.209.117-.485.19-.812.19-.7 0-1.12-.307-1.12-1.1m-15.65-3.584a.62.62 0 100 1.24.62.62 0 000-1.24m10.502 3.952c-.303.013-.483-.161-.483-.371 0-.203.16-.307.454-.307h.667v.036c-.004.137-.06.617-.638.642zm1.746-1.008c0-1.033-.739-1.729-1.784-1.729-.665 0-1.126.271-1.447.677l.647.536c.24-.234.461-.34.738-.34.359 0 .621.182.716.537l.001.025-.77.003c-.956.013-1.458.37-1.458 1.045 0 .65.464.999 1.262.999.432 0 .764-.17.987-.401v.32h1.106v-1.628l.002-.032V17.4M3.458 15.99h-.043a.61.61 0 00-.61.61v2.474h1.263v-2.474a.61.61 0 00-.61-.61" }
+].map(function (p) { return Object.assign({}, p, { live: !!p.url, soon: !p.url, hasIcon: !!p.icon }); })
+};
+}
+}
+</script>
+</body>
+</html>
