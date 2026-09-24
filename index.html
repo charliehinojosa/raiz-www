@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{url}}/">
+  <meta name="theme-color" content="#1A1411">
+  <link rel="icon" type="image/png" href="/assets/img/raiz-logo-full.png">
+
+  <meta property="og:type" content="music.album">
+  <meta property="og:site_name" content="RAÍZ">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}/">
+  <meta property="og:image" content="{{url}}/assets/img/og-image-1200.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="RAÍZ album cover">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{url}}/assets/img/og-image-1200.jpg">
+  <!--@jsonld-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&family=Rubik+Dirt&display=swap">
+  <link rel="preload" as="image" href="/assets/video/hero-poster.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="/src/styles.css">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+<div class="rz">
+
+  <div class="rz-bg" aria-hidden="true">
+    <video class="rz-video" id="hero-video" src="/assets/video/hero-loop.mp4" poster="/assets/video/hero-poster.jpg"
+      autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+    <div class="rz-fx">
+      <div class="rz-fx-l rz-lines"></div>
+      <svg class="rz-grain" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <filter id="rzNoise" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#rzNoise)"/>
+      </svg>
+      <div class="rz-fx-l rz-roll"></div>
+    </div>
+    <div class="rz-scrim rz-scrim-side"></div>
+    <div class="rz-scrim rz-scrim-tb"></div>
+  </div>
+
+  <div class="rz-page">
+
+    <section id="top" class="rz-hero">
+      <header class="rz-hdr">
+        <a href="#top" class="rz-hdr-home" aria-label="RAÍZ home"><img class="rz-hdr-logo" src="/assets/img/raiz-logo-full.png" alt="RAÍZ" width="760" height="844"></a>
+        <nav class="rz-nav" aria-label="Primary">
+          <a class="rz-hide-sm" href="#album">Album</a>
+          <a href="#listen">Listen</a>
+          <button type="button" class="rz-hide-sm rz-navbtn" data-trailer>Trailer</button>
+          <a class="rz-ig" href="{{instagram}}" target="_blank" rel="noopener" aria-label="Instagram @raizbandmusic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+            <span class="rz-hide-sm">@raizbandmusic</span>
+          </a>
+        </nav>
+      </header>
+      <div class="rz-spacer"></div>
+      <div class="rz-copy">
+        <h1 class="rz-logo-wrap">
+          <img class="rz-logo" src="/assets/img/raiz-logo-wordmark.png" alt="RAÍZ" width="760" height="844" fetchpriority="high">
+          <img class="rz-logo rz-roots" id="roots" src="/assets/img/raiz-logo-roots.png" alt="" width="760" height="844">
+        </h1>
+        <div class="rz-date">
+          <span class="rz-eyebrow">THE DEBUT ALBUM</span>
+          <span class="rz-date-num">{{dateLabel}}</span>
+        </div>
+        <div class="rz-btns">
+          <a class="rz-btn rz-btn-primary" href="#listen">LISTEN {{dateLabel}}</a>
+          <button type="button" class="rz-btn rz-btn-ghost rz-btn-ghost-hero" data-trailer>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 4l14 8-14 8z"/></svg>WATCH THE TRAILER
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="rz-ticker" role="marquee" aria-label="{{tickerLabel}}">
+      <div class="rz-ticker-track" aria-hidden="true"><!--@ticker--></div>
+    </div>
+
+    <section id="album" class="rz-album">
+      <img class="rz-cover" src="/assets/img/album-cover-1400.jpg" width="1400" height="1400" loading="lazy" decoding="async"
+        alt="RAÍZ album cover: the band walks out of an adobe church into the afternoon sun, the RAÍZ logo with roots in the sky">
+      <div class="rz-album-copy">
+        <h2 class="rz-eyebrow rz-accent">MEET RAÍZ</h2>
+        <p class="rz-tagline rz-f-dirt">Where it all started. <span lang="es">Donde todo empieza.</span></p>
+        <div class="rz-about">
+          <p><strong>RAÍZ is Christian alt-rock with Latin roots.</strong> Overdriven electric guitar carries the hook, congas and timbales drive the groove, and one voice sings it all in two languages. Think Santana and Maná colliding with ’90s alt-rock.</p>
+          <p>The songs switch between English and <span lang="es">español</span> the way bilingual families actually talk, mid-sentence and without translating.</p>
+          <p><span lang="es">Raíz</span> means <em>root</em>. The self-titled debut goes back to where faith starts, and it’s out everywhere <strong>September 26</strong>.</p>
+        </div>
+        <dl class="rz-facts">
+          <div class="rz-fact"><dt class="rz-fact-k">SOUND</dt><dd class="rz-fact-v">Latin alt-rock</dd></div>
+          <div class="rz-fact"><dt class="rz-fact-k">LANGUAGE</dt><dd class="rz-fact-v">English + <span lang="es">Español</span></dd></div>
+        </dl>
+        <div>
+          <button type="button" class="rz-btn rz-btn-ghost" data-radio-open>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9l13-5"/><rect x="3" y="9" width="18" height="12" rx="2"/><circle cx="15.5" cy="15" r="3"/><path d="M6.5 13h4M6.5 17h4"/></svg>TUNE IN TO RAÍZ RADIO
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="listen" class="rz-listen">
+      <div class="rz-listen-head">
+        <div class="rz-listen-titles">
+          <div class="rz-eyebrow rz-accent-dark">AVAILABLE EVERYWHERE · {{dateLabel}}</div>
+          <h2 class="rz-h2">Listen to RAÍZ</h2>
+        </div>
+        <p class="rz-listen-note rz-f-dirt">Pick your platform. <span lang="es">Escúchalo donde quieras.</span></p>
+      </div>
+      <div class="rz-wall">
+<!--@wall-->
+      </div>
+    </section>
+
+    <footer class="rz-foot">
+      <img src="/assets/img/raiz-logo-full.png" alt="RAÍZ" width="760" height="844" class="rz-foot-logo" loading="lazy">
+      <div class="rz-foot-links">
+        <a href="{{instagram}}" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="{{youtubeChannel}}" target="_blank" rel="noopener">YOUTUBE</a>
+      </div>
+      <span>{{copyright}}</span>
+    </footer>
+
+  </div>
+
+  <div class="rz-radio-root" id="radio" data-open="false" data-playing="false">
+    <button type="button" class="rz-radio-pill" data-radio-open aria-label="Open RAÍZ Radio, preview tracks from the album">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9l13-5"/><rect x="3" y="9" width="18" height="12" rx="2"/><circle cx="15.5" cy="15" r="3"/><path d="M6.5 13h4M6.5 17h4"/></svg>
+      <span>RAÍZ RADIO</span><span class="rz-onair"></span>
+    </button>
+    <section class="rz-radio" aria-label="RAÍZ Radio" hidden>
+      <div class="rz-radio-top">
+        <div class="rz-radio-brand"><span class="rz-onair"></span><span>RAÍZ RADIO</span><span class="rz-radio-air" data-air>OFF AIR</span></div>
+        <button type="button" class="rz-radio-min" data-radio-min aria-label="Minimize radio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div class="rz-dial">
+        <div class="rz-dial-ticks"></div>
+        <div class="rz-dial-ticks-major"></div>
+        <!--@stations-->
+        <div class="rz-needle" style="left:8%"></div>
+      </div>
+      <div class="rz-radio-now" aria-live="polite">
+        <div class="rz-radio-meta">TRACK <span data-num>01</span> / {{trackCount}} · <span data-freq>{{firstFreq}}</span> FM</div>
+        <p class="rz-radio-title" data-title>{{firstTitle}}</p>
+      </div>
+      <div class="rz-radio-prog"><div class="rz-radio-prog-fill"></div></div>
+      <div class="rz-radio-ctrls">
+        <button type="button" class="rz-rbtn" data-prev aria-label="Previous track"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+        <button type="button" class="rz-rbtn rz-rbtn-play" data-toggle aria-label="Play {{firstTitle}}">
+          <svg class="rz-i-pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <svg class="rz-i-play" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5l13 7.5-13 7.5z"/></svg>
+        </button>
+        <button type="button" class="rz-rbtn" data-next aria-label="Next track"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+        <a class="rz-radio-listen" href="{{listenUrl}}" target="_blank" rel="noopener">LISTEN</a>
+      </div>
+    </section>
+    <audio data-track src="{{firstSrc}}" preload="none"></audio>
+    <audio data-static src="/assets/audio/static.mp3" preload="auto"></audio>
+  </div>
+
+  <dialog class="rz-modal" id="trailer" aria-labelledby="trailer-title">
+    <div class="rz-modal-box">
+      <div class="rz-modal-head">
+        <span id="trailer-title" class="rz-modal-title">OFFICIAL TRAILER <span class="rz-accent">· {{dateLabel}}</span></span>
+        <button type="button" class="rz-modal-close" data-trailer-close aria-label="Close trailer" autofocus>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="rz-modal-frame" data-trailer-frame>
+        <noscript><a href="{{trailerUrl}}">Watch the trailer on YouTube</a></noscript>
+      </div>
+    </div>
+  </dialog>
+
+</div>
+</body>
+</html>

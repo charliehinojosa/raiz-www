@@ -1,0 +1,220 @@
+/* RAÍZ — values follow docs/FRD.md §5 and the approved prototype. */
+
+:root {
+  --ink: #1A1411;
+  --cream: #F5EFE3;
+  --accent: #FF4A1C;
+  --accent-dark: #B8330F;
+  --muted: #4A3F37;
+  --muted-2: #6B5F55;
+  --pad: clamp(20px, 5.5vw, 80px);
+  /* 1% of the layout width without the scrollbar; main.ts keeps it exact. */
+  --vw: 1vw;
+  --hero-h: calc(var(--vw) * 56.25);
+  --font: Montserrat, 'Helvetica Neue', Arial, sans-serif;
+  --font-dirt: 'Rubik Dirt', Impact, sans-serif;
+  --tick-shift: -25%;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+html.rz-lock { overflow: hidden; }
+body { margin: 0; background: var(--ink); color: var(--cream); font-family: var(--font); overflow-x: hidden; }
+img, svg, video { display: block; }
+a { color: var(--cream); text-decoration: none; }
+a:hover { color: var(--accent); }
+button { font-family: inherit; }
+h1, h2, p, dl, dd { margin: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.rz { position: relative; width: 100%; }
+.rz-accent { color: var(--accent); }
+.rz-accent-dark { color: var(--accent-dark); }
+.rz-f-dirt { font-family: var(--font-dirt); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
+.rz-eyebrow { font-size: 14px; font-weight: 800; letter-spacing: .32em; }
+
+/* ---------- Video background (FR-2) ---------- */
+.rz-bg { position: fixed; left: 0; top: 0; width: calc(var(--vw) * 100); height: var(--hero-h); z-index: 0; overflow: hidden; background: var(--ink); }
+.rz-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.3) contrast(1.06) blur(.6px); }
+.rz-scrim { position: absolute; inset: 0; }
+.rz-scrim-side { background: linear-gradient(90deg, rgba(20,14,11,.9) 0%, rgba(20,14,11,.7) 32%, rgba(20,14,11,.1) 60%, rgba(20,14,11,0) 100%); }
+.rz-scrim-tb { background: linear-gradient(180deg, rgba(20,14,11,.6) 0%, rgba(20,14,11,0) 22%, rgba(20,14,11,0) 80%, rgba(20,14,11,.55) 100%); }
+
+/* VHS overlay (FR-2.5) */
+.rz-fx { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: .7; }
+.rz-fx-l { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.rz-lines { background: repeating-linear-gradient(180deg, rgba(0,0,0,.45) 0, rgba(0,0,0,.45) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 3px); opacity: .55; }
+.rz-grain { position: absolute; left: -50%; top: -50%; width: 200%; height: 200%; mix-blend-mode: overlay; opacity: .35; will-change: transform; animation: rzGrain .6s steps(6) infinite; }
+@keyframes rzGrain {
+  0% { transform: translate(0,0); } 17% { transform: translate(-8%,5%); } 33% { transform: translate(6%,-9%); }
+  50% { transform: translate(-4%,11%); } 67% { transform: translate(10%,3%); } 83% { transform: translate(-11%,-6%); } 100% { transform: translate(3%,8%); }
+}
+.rz-roll { height: 22%; top: -24%; background: linear-gradient(180deg, rgba(245,239,227,0) 0%, rgba(245,239,227,.09) 50%, rgba(245,239,227,0) 100%); animation: rzRoll 6.5s linear infinite; }
+@keyframes rzRoll { from { transform: translateY(0); } to { transform: translateY(580%); } }
+
+/* ---------- Page ---------- */
+.rz-page { position: relative; z-index: 1; }
+
+/* Header (FR-1) */
+.rz-hero { position: relative; height: var(--hero-h); display: flex; flex-direction: column; }
+.rz-hdr { position: absolute; left: 0; top: 0; right: 0; z-index: 2; height: clamp(64px, 6.5vw, 96px); padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+.rz-hdr-home { display: flex; align-items: center; min-height: 44px; }
+.rz-hdr-logo { height: clamp(34px, 3.6vw, 52px); width: auto; }
+.rz-nav { display: flex; gap: clamp(18px, 2.8vw, 40px); align-items: center; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.rz-nav a { display: flex; align-items: center; min-height: 44px; }
+.rz-ig { gap: 8px; }
+.rz-navbtn { background: none; border: 0; padding: 0; margin: 0; color: var(--cream); font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; min-height: 44px; }
+.rz-navbtn:hover { color: var(--accent); }
+
+/* Hero copy (FR-2.6) */
+.rz-spacer { display: none; }
+.rz-copy { flex-grow: 1; padding: clamp(64px, 6.5vw, 96px) var(--pad) clamp(24px, 4vw, 64px); display: flex; flex-direction: column; justify-content: center; gap: clamp(16px, 2.2vw, 32px); }
+.rz-date { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.rz-date-num { font-size: clamp(28px, 2.8vw, 40px); font-weight: 900; letter-spacing: .02em; color: var(--accent); }
+
+/* Roots logo (FR-3) */
+.rz-logo-wrap { position: relative; width: clamp(160px, 24vw, 360px); aspect-ratio: 760 / 844; }
+.rz-logo { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.rz-roots { -webkit-clip-path: circle(0% at 50% 59.5%); clip-path: circle(0% at 50% 59.5%); visibility: hidden; }
+
+/* Buttons (§5) */
+.rz-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.rz-btn { height: clamp(48px, 3.9vw, 56px); padding: 0 clamp(20px, 2.2vw, 32px); display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; font-size: clamp(12px, 1vw, 14px); font-weight: 800; letter-spacing: .14em; white-space: nowrap; }
+.rz-btn-primary { background: var(--accent); color: var(--ink); }
+.rz-btn-primary:hover { color: var(--ink); background: #FF6A42; }
+.rz-btn-ghost { border: 1.5px solid rgba(245,239,227,.7); background: transparent; color: var(--cream); cursor: pointer; }
+.rz-btn-ghost-hero { background: rgba(20,14,11,.35); }
+.rz-btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Ticker (FR-4) ---------- */
+.rz-ticker { position: relative; overflow: hidden; white-space: nowrap; background: var(--accent); color: var(--ink); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.rz-ticker-track { display: inline-flex; width: max-content; animation: rzTick 38s linear infinite; }
+.rz-ticker:hover .rz-ticker-track { animation-play-state: paused; }
+.rz-ticker-group { display: inline-flex; align-items: center; gap: clamp(14px, 1.4vw, 22px); padding: clamp(7px, .6vw, 9px) clamp(7px, .7vw, 11px); line-height: 1; }
+.rz-ticker-lead { font-family: var(--font-dirt); font-size: clamp(14px, 1.15vw, 17px); text-transform: uppercase; letter-spacing: .02em; }
+.rz-ticker-item { font-size: clamp(11px, .9vw, 13px); font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+.rz-ticker-sep { width: 5px; height: 5px; border-radius: 999px; background: var(--ink); flex-shrink: 0; }
+@keyframes rzTick { from { transform: translateX(0); } to { transform: translateX(var(--tick-shift)); } }
+
+/* ---------- Meet RAÍZ (FR-5) ---------- */
+.rz-album { background: var(--ink); padding: clamp(72px, 8vw, 120px) var(--pad); display: flex; gap: clamp(40px, 6vw, 88px); align-items: center; }
+.rz-cover { width: clamp(260px, 33vw, 480px); height: auto; aspect-ratio: 1 / 1; flex-shrink: 0; object-fit: cover; border-radius: 6px; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
+.rz-album-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.rz-tagline { font-size: clamp(28px, 3vw, 44px); max-width: 640px; line-height: 1.15; }
+.rz-about { display: flex; flex-direction: column; gap: 16px; max-width: 580px; font-size: 18px; line-height: 1.6; color: rgba(245,239,227,.82); }
+.rz-about strong { color: var(--cream); font-weight: 800; }
+.rz-facts { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-top: 18px; border-top: 1px solid rgba(245,239,227,.15); max-width: 620px; }
+.rz-fact { display: flex; flex-direction: column; gap: 6px; }
+.rz-fact-k { font-size: 11px; font-weight: 800; letter-spacing: .24em; color: rgba(245,239,227,.6); }
+.rz-fact-v { font-size: 16px; font-weight: 700; color: var(--cream); }
+
+/* ---------- Listen / logo wall (FR-6) ---------- */
+.rz-listen { background: var(--cream); color: var(--ink); padding: clamp(72px, 7.8vw, 112px) var(--pad) clamp(80px, 8.3vw, 120px); display: flex; flex-direction: column; gap: clamp(32px, 3.3vw, 48px); }
+.rz-listen-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+.rz-listen-titles { display: flex; flex-direction: column; gap: 16px; }
+.rz-h2 { font-size: clamp(36px, 3.9vw, 56px); font-weight: 900; color: var(--ink); }
+.rz-listen-note { max-width: 380px; font-size: 24px; line-height: 1.3; color: var(--muted); text-align: right; }
+.rz-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(26,20,17,.16); border-left: 1px solid rgba(26,20,17,.16); }
+.rz-cell { min-height: 150px; padding: 24px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border-right: 1px solid rgba(26,20,17,.16); border-bottom: 1px solid rgba(26,20,17,.16); color: var(--ink); text-align: center; transition: background .2s ease; }
+a.rz-cell:hover { background: #FFFFFF; color: var(--ink); }
+a.rz-cell:hover .rz-cell-icon { transform: scale(1.08); }
+.rz-cell-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.rz-cell-icon { width: 30px; height: 30px; flex-shrink: 0; transition: transform .2s ease; }
+/* Coming Soon: the icon fades to 40% as designed; the name uses the muted ink
+   instead of 40% opacity so it keeps 4.5:1 contrast. */
+.rz-cell-soon .rz-cell-icon { opacity: .4; }
+.rz-cell-soon .rz-cell-logo { color: var(--muted-2); }
+.rz-cell-tag { font-size: 11px; font-weight: 800; letter-spacing: .2em; color: var(--muted-2); }
+.rz-cell-tag-live { color: var(--accent-dark); }
+
+/* ---------- Footer (FR-9) ---------- */
+.rz-foot { background: var(--ink); padding: 48px var(--pad); display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(245,239,227,.7); }
+.rz-foot-logo { height: 64px; width: auto; }
+.rz-foot-links { display: flex; gap: 32px; flex-wrap: wrap; }
+.rz-foot-links a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ---------- Trailer modal (FR-7) ---------- */
+.rz-modal { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0; padding: clamp(16px, 4vw, 56px); background: transparent; color: var(--cream); overflow: auto; }
+.rz-modal[open] { display: flex; align-items: center; justify-content: center; }
+.rz-modal::backdrop { background: rgba(10,7,5,.88); }
+.rz-modal-box { position: relative; width: min(1120px, 100%); display: flex; flex-direction: column; gap: 14px; animation: rzPop .25s ease-out; }
+.rz-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.rz-modal-title { font-size: 13px; font-weight: 800; letter-spacing: .32em; }
+.rz-modal-close { width: 44px; height: 44px; flex-shrink: 0; border-radius: 999px; border: 1.5px solid rgba(245,239,227,.5); background: rgba(20,14,11,.6); color: var(--cream); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.rz-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+.rz-modal-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.rz-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@keyframes rzPop { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+
+/* ---------- RAÍZ Radio (FR-8) ---------- */
+.rz-radio-pill { position: fixed; right: 16px; bottom: 16px; z-index: 60; min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 18px 0 14px; border-radius: 999px; border: 1.5px solid rgba(245,239,227,.35); background: rgba(20,14,11,.9); color: var(--cream); font: 800 12px/1 var(--font); letter-spacing: .2em; cursor: pointer; box-shadow: 0 12px 32px rgba(0,0,0,.45); }
+.rz-radio-pill:hover { border-color: var(--accent); color: var(--accent); }
+.rz-radio-root[data-open="true"] .rz-radio-pill { display: none; }
+.rz-onair { width: 8px; height: 8px; border-radius: 999px; background: rgba(245,239,227,.3); flex-shrink: 0; }
+.rz-radio-root[data-playing="true"] .rz-onair { background: var(--accent); animation: rzAir 1.6s ease-out infinite; }
+@keyframes rzAir { from { box-shadow: 0 0 0 0 rgba(255,74,28,.6); } to { box-shadow: 0 0 0 10px rgba(255,74,28,0); } }
+
+.rz-radio { position: fixed; right: 16px; bottom: 16px; z-index: 60; width: 360px; max-width: calc(100% - 32px); padding: 16px 18px 18px; border-radius: 16px; border: 1px solid rgba(245,239,227,.2); background: rgba(20,14,11,.94); color: var(--cream); box-shadow: 0 20px 50px rgba(0,0,0,.55); display: flex; flex-direction: column; gap: 14px; animation: rzPop .2s ease-out; }
+.rz-radio[hidden] { display: none; }
+.rz-radio-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rz-radio-brand { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; letter-spacing: .24em; }
+.rz-radio-air { color: rgba(245,239,227,.6); }
+.rz-radio-min { width: 44px; height: 44px; margin: -10px -10px -10px 0; border: 0; background: none; color: rgba(245,239,227,.7); display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 999px; }
+.rz-radio-min:hover { color: var(--cream); }
+
+.rz-dial { position: relative; height: 58px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #2A211C, #1E1814); border: 1px solid rgba(245,239,227,.14); }
+.rz-dial-ticks { position: absolute; left: 6px; right: 6px; top: 8px; height: 12px; background: repeating-linear-gradient(90deg, rgba(245,239,227,.35) 0, rgba(245,239,227,.35) 1px, transparent 1px, transparent 8px); }
+.rz-dial-ticks-major { position: absolute; left: 6px; right: 6px; top: 8px; height: 18px; background: repeating-linear-gradient(90deg, rgba(245,239,227,.6) 0, rgba(245,239,227,.6) 1px, transparent 1px, transparent 40px); }
+.rz-station { position: absolute; bottom: 7px; transform: translateX(-50%); border: 0; background: none; padding: 4px 2px; color: rgba(245,239,227,.62); font: 700 10px/1 var(--font); letter-spacing: .06em; cursor: pointer; }
+/* Larger invisible hit area for touch. */
+.rz-station::before { content: ''; position: absolute; left: -10px; right: -10px; top: -30px; bottom: -8px; }
+.rz-station:hover, .rz-station-on { color: var(--cream); }
+.rz-station:focus-visible { outline-offset: 1px; }
+.rz-needle { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent); box-shadow: 0 0 10px rgba(255,74,28,.8); pointer-events: none; transition: left .5s cubic-bezier(.3, 1.4, .5, 1); }
+
+.rz-radio-now { display: flex; flex-direction: column; gap: 8px; }
+.rz-radio-meta { font-size: 11px; font-weight: 700; letter-spacing: .18em; color: rgba(245,239,227,.65); }
+.rz-radio-title { font-family: var(--font-dirt); font-size: 28px; line-height: 1; text-transform: uppercase; letter-spacing: .01em; }
+.rz-radio-prog { height: 3px; border-radius: 3px; background: rgba(245,239,227,.15); overflow: hidden; }
+.rz-radio-prog-fill { height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); }
+.rz-radio-ctrls { display: flex; align-items: center; gap: 8px; }
+.rz-rbtn { width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid rgba(245,239,227,.3); background: transparent; color: var(--cream); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; flex-shrink: 0; }
+.rz-rbtn:hover { border-color: var(--cream); }
+.rz-rbtn-play { width: 56px; height: 56px; border: 0; background: var(--accent); color: var(--ink); }
+.rz-rbtn-play:hover { background: #FF6A42; }
+.rz-i-pause { display: none; }
+.rz-radio-root[data-playing="true"] .rz-i-pause { display: block; }
+.rz-radio-root[data-playing="true"] .rz-i-play { display: none; }
+.rz-radio-listen { margin-left: auto; font-size: 11px; font-weight: 800; letter-spacing: .16em; color: var(--cream); border-bottom: 1.5px solid var(--accent); padding: 16px 0 2px; }
+
+/* ---------- Responsive (§4) ---------- */
+@media (max-width: 1000px) {
+  .rz-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .rz-hero { height: auto; }
+  .rz-scrim-side, .rz .rz-hide-sm { display: none; }
+  .rz-spacer { display: block; height: var(--hero-h); }
+  .rz-copy { background: var(--ink); padding: 36px var(--pad) 56px; box-shadow: 0 -24px 48px rgba(0,0,0,.45); }
+  .rz-logo-wrap { width: 200px; }
+  .rz-btn { flex: 1 1 100%; }
+  .rz-album { flex-direction: column; align-items: flex-start; padding-top: 24px; }
+  .rz-cover { width: 100%; }
+  .rz-about { font-size: 16px; }
+  .rz-listen-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .rz-listen-note { text-align: left; }
+  .rz-cell { min-height: 112px; padding: 18px 10px; gap: 10px; }
+  .rz-cell-logo { font-size: 15px; gap: 8px; }
+  .rz-cell-icon { width: 22px; height: 22px; }
+  .rz-foot { flex-direction: column; align-items: flex-start; padding: 40px var(--pad) 48px; }
+  .rz-radio-pill { right: 12px; bottom: 12px; }
+  .rz-radio { left: 8px; right: 8px; bottom: 8px; width: auto; max-width: none; }
+}
+
+/* ---------- Reduced motion (§7) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .rz-fx *, .rz-ticker-track, .rz-modal-box, .rz-radio, .rz-radio-root[data-playing="true"] .rz-onair { animation: none !important; }
+  .rz-needle { transition: none; }
+  .rz-roots { -webkit-clip-path: none; clip-path: none; visibility: visible; }
+}
