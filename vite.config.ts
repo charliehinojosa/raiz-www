@@ -82,8 +82,9 @@ function siteData(): Plugin {
           albumProductionType: 'https://schema.org/StudioAlbum',
           albumReleaseType: 'https://schema.org/AlbumRelease',
           recordLabel: { '@type': 'Organization', name: 'Sightbox Records' },
-          sameAs: platforms.filter((p) => p.url).map((p) => p.url),
         };
+        const live = platforms.filter((p) => p.url).map((p) => p.url);
+        if (live.length) Object.assign(jsonLd, { sameAs: live });
 
         const vars: Record<string, string> = {
           title: esc(site.title),
@@ -96,6 +97,8 @@ function siteData(): Plugin {
           copyright: esc(site.copyright),
           tickerLabel: esc(tickerLabel),
           listenUrl: esc(listenUrl),
+        // In-page anchors (e.g. "#listen") stay in the tab; external links open a new one.
+        listenTarget: listenUrl.startsWith('#') ? '' : ' target="_blank" rel="noopener"',
           trackCount: String(n).padStart(2, '0'),
           firstTitle: esc(tracks[0].title),
           firstFreq: esc(tracks[0].freq),

@@ -1,7 +1,7 @@
 {
   "_note": "url: null renders the cell as COMING SOON (not a link). Paste the real album URL to make it live. Order = display order on the logo wall and in the ticker.",
   "platforms": [
-    { "id": "spotify",      "name": "Spotify",       "icon": "assets/icons/spotify.svg",      "url": "https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa" },
+    { "id": "spotify",      "name": "Spotify",       "icon": "assets/icons/spotify.svg",      "url": null },
     { "id": "applemusic",   "name": "Apple Music",   "icon": "assets/icons/applemusic.svg",   "url": null },
     { "id": "youtubemusic", "name": "YouTube Music", "icon": "assets/icons/youtubemusic.svg", "url": null },
     { "id": "amazonmusic",  "name": "Amazon Music",  "icon": null,                            "url": null },
