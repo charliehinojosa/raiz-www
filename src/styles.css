@@ -197,7 +197,7 @@ a.rz-cell:hover .rz-cell-icon { transform: scale(1.08); }
   .rz-scrim-side, .rz .rz-hide-sm { display: none; }
   .rz-spacer { display: block; height: var(--hero-h); }
   .rz-copy { background: var(--ink); padding: 36px var(--pad) 56px; box-shadow: 0 -24px 48px rgba(0,0,0,.45); }
-  .rz-logo-wrap { width: 200px; }
+  .rz-logo-wrap { width: 200px; align-self: center; }
   .rz-btn { flex: 1 1 100%; }
   .rz-album { flex-direction: column; align-items: flex-start; padding-top: 24px; }
   .rz-cover { width: 100%; }
