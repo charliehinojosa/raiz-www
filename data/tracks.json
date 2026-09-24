@@ -1,0 +1,12 @@
+{
+  "_note": "RAÍZ Radio stations, in dial order. src files are PLACEHOLDERS until Charlie supplies the real 20–30s clips (MP3 192kbps, ~-14 LUFS, 1s fade in/out). listenUrl is the radio's LISTEN link.",
+  "listenUrl": "https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa",
+  "tracks": [
+    { "title": "Vivo",          "freq": "88.1",  "src": "assets/audio/placeholders/clip-01.mp3" },
+    { "title": "I Speak Jesus", "freq": "91.3",  "src": "assets/audio/placeholders/clip-02.mp3" },
+    { "title": "Abuela",        "freq": "94.5",  "src": "assets/audio/placeholders/clip-03.mp3" },
+    { "title": "Tres",          "freq": "97.7",  "src": "assets/audio/placeholders/clip-04.mp3" },
+    { "title": "3:33",          "freq": "100.9", "src": "assets/audio/placeholders/clip-05.mp3" },
+    { "title": "La Lucha",      "freq": "104.1", "src": "assets/audio/placeholders/clip-06.mp3" }
+  ]
+}
