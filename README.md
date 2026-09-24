@@ -28,7 +28,7 @@ npm run preview   # serve dist/
 
 ### Common edits
 - **New streaming link:** set `url` for that platform in `data/platforms.json`.
-- **Real radio clips:** drop the MP3s in `public/assets/audio/` and update `src` in `data/tracks.json`.
+- **Radio clips:** MP3s live in `public/assets/audio/radio/` (192 kbps, ~−14 LUFS, 1s fades); WAV masters in `media-src/radio/` (not deployed). Add or reorder stations in `data/tracks.json`.
 - **Cleaned hero video:** replace `public/assets/video/hero-loop.mp4` (same name and specs).
 - **Release-day copy:** change `releaseDateLabel` in `data/site.json`; the body copy in `index.html` also says "September 26".
 
