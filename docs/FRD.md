@@ -231,7 +231,7 @@ A single-page site for RAÍZ ("Christian alt-rock with Latin roots"). The page h
   - Radio audio uses `preload="none"`; the static burst can preload.
 - **SEO / social:**
   - `<title>` RAÍZ — The Debut Album, plus the meta description from `site.json`.
-  - Open Graph and Twitter card using `assets/img/og-image-1200.jpg`.
+  - Open Graph and Twitter card using `assets/img/og-image-1200x630.jpg`.
   - Optional `MusicAlbum` JSON-LD.
 - **Browsers:** the latest two versions of Chrome, Safari (macOS and iOS), Firefox and Edge.
 

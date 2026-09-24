@@ -1,6 +1,6 @@
 {
-  "_note": "RAÍZ Radio stations, in dial order. src files are PLACEHOLDERS until Charlie supplies the real 20–30s clips (MP3 192kbps, ~-14 LUFS, 1s fade in/out). listenUrl is the radio's LISTEN link.",
-  "listenUrl": "https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa",
+  "_note": "RAÍZ Radio stations, in dial order. src files are PLACEHOLDERS until Charlie supplies the real 20–30s clips (MP3 192kbps, ~-14 LUFS, 1s fade in/out). listenUrl is the radio's LISTEN link: \"#listen\" jumps to the logo wall; set a streaming URL to open it in a new tab.",
+  "listenUrl": "#listen",
   "tracks": [
     { "title": "Vivo",          "freq": "88.1",  "src": "assets/audio/placeholders/clip-01.mp3" },
     { "title": "I Speak Jesus", "freq": "91.3",  "src": "assets/audio/placeholders/clip-02.mp3" },
