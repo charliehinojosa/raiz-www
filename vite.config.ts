@@ -81,7 +81,7 @@ function siteData(): Plugin {
           byArtist: { '@type': 'MusicGroup', name: 'RAÍZ', sameAs: [site.links.instagram, site.links.youtubeChannel] },
           albumProductionType: 'https://schema.org/StudioAlbum',
           albumReleaseType: 'https://schema.org/AlbumRelease',
-          recordLabel: { '@type': 'Organization', name: 'Sightbox Records' },
+          recordLabel: { '@type': 'Organization', name: site.labelName, url: site.links.label },
         };
         const live = platforms.filter((p) => p.url).map((p) => p.url);
         if (live.length) Object.assign(jsonLd, { sameAs: live });
@@ -94,7 +94,11 @@ function siteData(): Plugin {
           instagram: esc(site.links.instagram),
           youtubeChannel: esc(site.links.youtubeChannel),
           trailerUrl: esc(site.links.trailer),
-          copyright: esc(site.copyright),
+          // The label name inside the copyright line links to the label's site.
+          copyright: esc(site.copyright).replace(
+            esc(site.labelName),
+            `<a href="${esc(site.links.label)}" target="_blank" rel="noopener">${esc(site.labelName)}</a>`,
+          ),
           tickerLabel: esc(tickerLabel),
           listenUrl: esc(listenUrl),
         // In-page anchors (e.g. "#listen") stay in the tab; external links open a new one.
