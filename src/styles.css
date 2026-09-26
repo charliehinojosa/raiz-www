@@ -132,6 +132,8 @@ a.rz-cell:hover .rz-cell-icon { transform: scale(1.08); }
 .rz-foot-logo { height: 64px; width: auto; }
 .rz-foot-links { display: flex; gap: 32px; flex-wrap: wrap; }
 .rz-foot-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.rz-foot-copy a { display: inline-block; padding: 14px 0; text-decoration: underline; text-decoration-color: rgba(245,239,227,.4); text-underline-offset: 4px; }
+.rz-foot-copy a:hover { text-decoration-color: currentColor; }
 
 /* ---------- Trailer modal (FR-7) ---------- */
 .rz-modal { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0; padding: clamp(16px, 4vw, 56px); background: transparent; color: var(--cream); overflow: auto; }
