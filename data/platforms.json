@@ -2,7 +2,7 @@
   "_note": "url: null renders the cell as COMING SOON (not a link). Paste the real album URL to make it live. Order = display order on the logo wall and in the ticker.",
   "platforms": [
     { "id": "spotify",      "name": "Spotify",       "icon": "assets/icons/spotify.svg",      "url": "https://open.spotify.com/album/6lm4CHNWQsehPuMMojewMa" },
-    { "id": "applemusic",   "name": "Apple Music",   "icon": "assets/icons/applemusic.svg",   "url": null },
+    { "id": "applemusic",   "name": "Apple Music",   "icon": "assets/icons/applemusic.svg",   "url": "https://music.apple.com/us/album/ra%C3%ADz/6815781048" },
     { "id": "youtubemusic", "name": "YouTube Music", "icon": "assets/icons/youtubemusic.svg", "url": "https://music.youtube.com/@raizband" },
     { "id": "amazonmusic",  "name": "Amazon Music",  "icon": null,                            "url": "https://music.amazon.com/albums/B0HKVTJ9TQ" },
     { "id": "tidal",        "name": "Tidal",         "icon": "assets/icons/tidal.svg",        "url": null },
