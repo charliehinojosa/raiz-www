@@ -12,5 +12,11 @@
     "label": "https://sightboxrecords.com"
   },
   "labelName": "Sightbox Records",
-  "copyright": "© 2026 Sightbox Records"
+  "copyright": "© 2026 Sightbox Records",
+  "contact": {
+    "role": "Management & Label",
+    "name": "Charlie Hinojosa",
+    "emailUser": "charlie",
+    "emailDomain": "sightbox.me"
+  }
 }

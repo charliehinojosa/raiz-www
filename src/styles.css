@@ -128,10 +128,15 @@ a.rz-cell:hover .rz-cell-icon { transform: scale(1.08); }
 .rz-cell-tag-live { color: var(--accent-dark); }
 
 /* ---------- Footer (FR-9) ---------- */
-.rz-foot { background: var(--ink); padding: 48px var(--pad); display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(245,239,227,.7); }
+.rz-foot { background: var(--ink); padding: 48px var(--pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(245,239,227,.7); }
 .rz-foot-logo { height: 64px; width: auto; }
 .rz-foot-links { display: flex; gap: 32px; flex-wrap: wrap; }
 .rz-foot-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.rz-foot-contact { display: flex; flex-direction: column; gap: 4px; line-height: 1.5; letter-spacing: .04em; text-transform: none; }
+.rz-foot-k { font-size: 11px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: rgba(245,239,227,.6); }
+.rz-email { color: var(--cream); }
+a.rz-email { display: inline-block; padding: 10px 0; margin: -10px 0; text-decoration: underline; text-decoration-color: rgba(245,239,227,.4); text-underline-offset: 4px; }
+a.rz-email:hover { color: var(--accent); text-decoration-color: currentColor; }
 .rz-foot-copy a { display: inline-block; padding: 14px 0; text-decoration: underline; text-decoration-color: rgba(245,239,227,.4); text-underline-offset: 4px; }
 .rz-foot-copy a:hover { text-decoration-color: currentColor; }
 
