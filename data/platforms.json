@@ -8,6 +8,6 @@
     { "id": "tidal",        "name": "Tidal",         "icon": "assets/icons/tidal.svg",        "url": null },
     { "id": "deezer",       "name": "Deezer",        "icon": "assets/icons/deezer.svg",       "url": null },
     { "id": "pandora",      "name": "Pandora",       "icon": "assets/icons/pandora.svg",      "url": null },
-    { "id": "iheartradio",  "name": "iHeartRadio",   "icon": "assets/icons/iheartradio.svg",  "url": null }
+    { "id": "iheartradio",  "name": "iHeartRadio",   "icon": "assets/icons/iheartradio.svg",  "url": "https://www.iheart.com/artist/raiz-33148890/albums/raiz-435005534" }
   ]
 }
