@@ -131,14 +131,8 @@ a.rz-cell:hover .rz-cell-icon { transform: scale(1.08); }
 .rz-foot { background: var(--ink); padding: 48px var(--pad); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; font-size: 13px; font-weight: 600; letter-spacing: .12em; color: rgba(245,239,227,.7); }
 .rz-foot-logo { height: 64px; width: auto; }
 .rz-foot-links { display: flex; gap: 32px; flex-wrap: wrap; }
-.rz-foot-links a { display: inline-flex; align-items: center; min-height: 44px; }
-.rz-foot-contact { display: flex; flex-direction: column; gap: 4px; line-height: 1.5; letter-spacing: .04em; text-transform: none; }
-.rz-foot-k { font-size: 11px; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: rgba(245,239,227,.6); }
-.rz-email { color: var(--cream); }
-a.rz-email { display: inline-block; padding: 10px 0; margin: -10px 0; text-decoration: underline; text-decoration-color: rgba(245,239,227,.4); text-underline-offset: 4px; }
-a.rz-email:hover { color: var(--accent); text-decoration-color: currentColor; }
-.rz-foot-copy a { display: inline-block; padding: 14px 0; text-decoration: underline; text-decoration-color: rgba(245,239,227,.4); text-underline-offset: 4px; }
-.rz-foot-copy a:hover { text-decoration-color: currentColor; }
+.rz-foot-links a, .rz-foot-label { display: inline-flex; align-items: center; min-height: 44px; }
+.rz-foot-label { text-transform: uppercase; }
 
 /* ---------- Trailer modal (FR-7) ---------- */
 .rz-modal { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0; padding: clamp(16px, 4vw, 56px); background: transparent; color: var(--cream); overflow: auto; }
@@ -214,7 +208,8 @@ a.rz-email:hover { color: var(--accent); text-decoration-color: currentColor; }
   .rz-cell { min-height: 112px; padding: 18px 10px; gap: 10px; }
   .rz-cell-logo { font-size: 15px; gap: 8px; }
   .rz-cell-icon { width: 22px; height: 22px; }
-  .rz-foot { flex-direction: column; align-items: flex-start; padding: 40px var(--pad) 48px; }
+  /* Bottom padding keeps the last line clear of the fixed RAÍZ Radio pill. */
+  .rz-foot { flex-direction: column; align-items: flex-start; padding: 40px var(--pad) 88px; }
   .rz-radio-pill { right: 12px; bottom: 12px; }
   .rz-radio { left: 8px; right: 8px; bottom: 8px; width: auto; max-width: none; }
 }

@@ -94,22 +94,13 @@ function siteData(): Plugin {
           instagram: esc(site.links.instagram),
           youtubeChannel: esc(site.links.youtubeChannel),
           trailerUrl: esc(site.links.trailer),
-          // The label name inside the copyright line links to the label's site.
-          contactRole: esc(site.contact.role),
-          contactName: esc(site.contact.name),
           labelName: esc(site.labelName),
-          emailUser: esc(site.contact.emailUser),
-          emailDomain: esc(site.contact.emailDomain),
-          // Spelled out in the HTML; src/contact.ts turns it into a real mailto link.
-          emailSpelled: esc(`${site.contact.emailUser} [at] ${site.contact.emailDomain.replace(/\./g, ' [dot] ')}`),
-          copyright: esc(site.copyright).replace(
-            esc(site.labelName),
-            `<a href="${esc(site.links.label)}" target="_blank" rel="noopener">${esc(site.labelName)}</a>`,
-          ),
+          labelUrl: esc(site.links.label),
+          copyright: esc(site.copyright),
           tickerLabel: esc(tickerLabel),
           listenUrl: esc(listenUrl),
-        // In-page anchors (e.g. "#listen") stay in the tab; external links open a new one.
-        listenTarget: listenUrl.startsWith('#') ? '' : ' target="_blank" rel="noopener"',
+          // In-page anchors (e.g. "#listen") stay in the tab; external links open a new one.
+          listenTarget: listenUrl.startsWith('#') ? '' : ' target="_blank" rel="noopener"',
           trackCount: String(n).padStart(2, '0'),
           firstTitle: esc(tracks[0].title),
           firstFreq: esc(tracks[0].freq),
